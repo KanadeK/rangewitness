@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=78"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rangewitness"
+version = "0.1.0"
+description = "Bounded HTTP byte-range deployment checks"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "KanadeK"}]
+dependencies = []
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+]
+
+[project.urls]
+Homepage = "https://github.com/KanadeK/rangewitness"
+Issues = "https://github.com/KanadeK/rangewitness/issues"
+
+[project.scripts]
+rangewitness = "rangewitness.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest==9.1.1", "coverage==7.17.0", "ruff==0.17.2", "build==1.6.1"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["rangewitness"]
+branch = true
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
